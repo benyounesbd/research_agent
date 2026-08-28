@@ -12,6 +12,7 @@ def main():
     result = graph.invoke(initial_state)
     print("\nFinal state:")
     print(result)
+    
 
 
 if __name__ == "__main__":

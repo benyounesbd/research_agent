@@ -6,7 +6,7 @@ def planner(state: ResearchState):
     question = state["question"]
 
     plan = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gemini-2.5-flash",
         response_model=ResearchPlan,
         messages=[
             {
