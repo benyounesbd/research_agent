@@ -6,6 +6,8 @@ from research_agent.nodes.planner import planner
 from research_agent.nodes.researcher import researcher
 from research_agent.state import ResearchState
 
+MAX_RETRIES = 2
+
 def route_after_critic(state: ResearchState):
     critique = state["critique"]
 
@@ -14,8 +16,11 @@ def route_after_critic(state: ResearchState):
 
     if critique.approved:
         return "end"
+
+    if state["retry_count"] < MAX_RETRIES:
+        return "research"
     
-    return "research"
+    return "end"
 
 builder = StateGraph(ResearchState)
 

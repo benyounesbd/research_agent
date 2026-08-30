@@ -28,6 +28,9 @@ def researcher(state: ResearchState):
         if len(sources) >= MAX_SOURCES:
             break
 
+    print("Research attempt:", state["retry_count"] + 1)
+
     return {
-        "sources": sources
+        "sources": sources,
+        "retry_count": state["retry_count"] + 1,
     }

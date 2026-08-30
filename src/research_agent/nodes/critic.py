@@ -41,6 +41,8 @@ def critic(state: ResearchState):
             },
         ],
     )
+    
+    print("Critique:", critique)
 
     return {
         "critique": critique
