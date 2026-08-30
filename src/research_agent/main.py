@@ -7,6 +7,8 @@ def main():
         "plan": None,
         "sources": [],
         "draft": None,
+        "critique": None,
+        "retry_count": 0,
     }
 
     result = graph.invoke(initial_state)

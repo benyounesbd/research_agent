@@ -9,3 +9,4 @@ class ResearchState(TypedDict):
     sources: list[Source]
     draft: str | None
     critique: Critique | None
+    retry_count: int
