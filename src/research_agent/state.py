@@ -1,6 +1,6 @@
 from typing import TypedDict
 
-from research_agent.schemas import ResearchPlan, Source
+from research_agent.schemas import Critique, ResearchPlan, Source
 
 
 class ResearchState(TypedDict):
@@ -8,3 +8,4 @@ class ResearchState(TypedDict):
     plan: ResearchPlan | None
     sources: list[Source]
     draft: str | None
+    critique: Critique | None

@@ -16,3 +16,7 @@ class Source(BaseModel):
     title: str
     url: str
     content: str
+
+class Critique(BaseModel):
+    approved: bool
+    feedback: str
