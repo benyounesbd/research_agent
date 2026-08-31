@@ -1,7 +1,8 @@
 # Research Agent
 
-> Un agente autónomo que planifica, investiga, sintetiza y **se autoevalúa** con un bucle de reintentos.
 > An autonomous agent that plans, researches, synthesizes and **self-critiques** with a retry loop.
+
+> Un agente autónomo que planifica, investiga, sintetiza y **se autoevalúa** con un bucle de reintentos.
 
 [EN](#en) · [ES](#es)
 
