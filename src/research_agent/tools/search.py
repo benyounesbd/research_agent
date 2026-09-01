@@ -1,8 +1,11 @@
 from research_agent.schemas import Source
 from tavily import TavilyClient
+from langsmith import traceable
 
 client = TavilyClient()
 
+
+@traceable(name="web_search")
 def search(query: str) -> list[Source]:
     response = client.search(query)
     return [
