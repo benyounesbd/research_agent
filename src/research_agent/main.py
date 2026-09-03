@@ -30,6 +30,12 @@ def start_research(request: ResearchRequest):
         initial_state,
         config=config,
     )
+
+    snapshot = graph.get_state(config)
+
+    print("Estado persistido:")
+    print(snapshot.values)
+
     return {
         "draft": result["draft"],
         "critique": result["critique"]
@@ -38,22 +44,3 @@ def start_research(request: ResearchRequest):
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
-
-def main():
-    initial_state = {
-        "question": "What is LangGraph?",
-        "plan": None,
-        "sources": [],
-        "draft": None,
-        "critique": None,
-        "retry_count": 0,
-    }
-
-    result = graph.invoke(initial_state)
-    print("\nFinal state:")
-    print(result)
-    
-
-
-if __name__ == "__main__":
-    main()
