@@ -20,3 +20,6 @@ class Source(BaseModel):
 class Critique(BaseModel):
     approved: bool
     feedback: str
+
+class ResearchRequest(BaseModel):
+    question: str
