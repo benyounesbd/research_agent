@@ -1,5 +1,11 @@
 from research_agent.graph import graph
+from fastapi import FastAPI
 
+app = FastAPI()
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
 
 def main():
     initial_state = {
