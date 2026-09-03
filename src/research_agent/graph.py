@@ -1,4 +1,5 @@
 from langgraph.graph import END, START, StateGraph
+from langgraph.checkpoint.memory import InMemorySaver
 
 from research_agent.nodes.critic import critic
 from research_agent.nodes.synthesizer import synthesizer
@@ -44,5 +45,7 @@ builder.add_conditional_edges(
     },
 )
 
-graph = builder.compile()
+checkpointer = InMemorySaver()
+
+graph = builder.compile(checkpointer=checkpointer)
 

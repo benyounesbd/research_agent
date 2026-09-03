@@ -20,8 +20,16 @@ def start_research(request: ResearchRequest):
         "retry_count": 0,
     }
 
-    result = graph.invoke(initial_state)
+    config = {
+        "configurable": {
+            "thread_id": "research-123"
+        }
+    }
 
+    result = graph.invoke(
+        initial_state,
+        config=config,
+    )
     return {
         "draft": result["draft"],
         "critique": result["critique"]
