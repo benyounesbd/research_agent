@@ -1,9 +1,13 @@
 from fastapi import FastAPI
 
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+
 from research_agent.graph import graph
 from research_agent.schemas import ResearchRequest
 
 app = FastAPI()
+
+FastAPIInstrumentor.instrument_app(app)
 
 @app.post("/research")
 def start_research(request: ResearchRequest):
@@ -17,7 +21,7 @@ def start_research(request: ResearchRequest):
     }
 
     result = graph.invoke(initial_state)
-    
+
     return {
         "draft": result["draft"],
         "critique": result["critique"]
