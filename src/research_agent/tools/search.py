@@ -4,10 +4,16 @@ from langsmith import traceable
 
 client = TavilyClient()
 
+class SearchError(Exception):
+    pass
 
 @traceable(name="web_search")
 def search(query: str) -> list[Source]:
-    response = client.search(query)
+    try:
+        response = client.search(query)
+    except Exception as exc:
+        raise SearchError("Web search failed") from exc
+
     return [
         Source(
             title=result["title"],
