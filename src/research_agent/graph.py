@@ -1,5 +1,7 @@
+import sqlite3
+
 from langgraph.graph import END, START, StateGraph
-from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.checkpoint.sqlite import SqliteSaver
 
 from research_agent.nodes.critic import critic
 from research_agent.nodes.synthesizer import synthesizer
@@ -45,7 +47,12 @@ builder.add_conditional_edges(
     },
 )
 
-checkpointer = InMemorySaver()
+conn = sqlite3.connect(
+    "research_agent.db",
+    check_same_thread=False,
+)
+
+checkpointer = SqliteSaver(conn)
 
 graph = builder.compile(checkpointer=checkpointer)
 

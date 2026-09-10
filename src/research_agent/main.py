@@ -22,7 +22,7 @@ def start_research(request: ResearchRequest):
 
     config = {
         "configurable": {
-            "thread_id": "research-123"
+            "thread_id": request.thread_id
         }
     }
 
@@ -44,3 +44,15 @@ def start_research(request: ResearchRequest):
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+@app.get("/research/{thread_id}")
+def get_research(thread_id: str):
+    config = {
+        "configurable": {
+            "thread_id": thread_id,
+        }
+    }
+
+    snapshot = graph.get_state(config)
+
+    return snapshot.values

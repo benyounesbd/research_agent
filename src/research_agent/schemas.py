@@ -23,3 +23,4 @@ class Critique(BaseModel):
 
 class ResearchRequest(BaseModel):
     question: str
+    thread_id: str
