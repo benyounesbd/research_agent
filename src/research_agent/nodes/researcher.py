@@ -2,7 +2,7 @@ from research_agent.state import ResearchState
 from research_agent.tools.search import search
 from research_agent.observability import tracer
 
-MAX_SOURCES = 3
+from research_agent.config import settings
 
 def researcher(state: ResearchState):
     plan = state["plan"]
@@ -29,10 +29,10 @@ def researcher(state: ResearchState):
                 seen_urls.add(source.url)
                 sources.append(source)
 
-                if len(sources) >= MAX_SOURCES:
+                if len(sources) >= settings.max_sources:
                     break
 
-            if len(sources) >= MAX_SOURCES:
+            if len(sources) >= settings.max_sources:
                 break
 
         span.set_attribute(
