@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
@@ -25,17 +25,15 @@ def start_research(request: ResearchRequest):
             "thread_id": request.thread_id
         }
     }
-
-    result = graph.invoke(
-        initial_state,
-        config=config,
-    )
-
-    snapshot = graph.get_state(config)
-
-    print("Estado persistido:")
-    print(snapshot.values)
-
+    try:
+        result = graph.invoke(
+            initial_state,
+            config=config,
+        )
+    except Exception as exc:
+        print(f"Research workflow failed: {exc}")
+        raise HTTPException(status_code=500, detail="Research workflow failed")
+    
     return {
         "draft": result["draft"],
         "critique": result["critique"]
