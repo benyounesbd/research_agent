@@ -1,5 +1,5 @@
 from research_agent.config import settings
-from research_agent.llm import client
+from research_agent.llm import get_client
 from research_agent.schemas import ResearchPlan
 from research_agent.state import ResearchState
 
@@ -7,6 +7,7 @@ from research_agent.state import ResearchState
 def planner(state: ResearchState):
     question = state["question"]
 
+    client = get_client()
     plan = client.chat.completions.create(
         model=settings.llm_model,
         response_model=ResearchPlan,

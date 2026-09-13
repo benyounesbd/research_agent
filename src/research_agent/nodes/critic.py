@@ -1,4 +1,4 @@
-from research_agent.llm import client
+from research_agent.llm import get_client
 from research_agent.schemas import Critique
 from research_agent.state import ResearchState
 
@@ -18,6 +18,7 @@ def critic(state: ResearchState):
         for source in sources
     )
 
+    client = get_client()
     critique = client.chat.completions.create(
         model="gemini-2.5-flash",
         response_model=Critique,

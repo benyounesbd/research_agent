@@ -1,9 +1,17 @@
 from langsmith import traceable
 from tavily import TavilyClient
 
+from research_agent.config import settings
 from research_agent.schemas import Source
 
-client = TavilyClient()
+
+def get_search_client():
+    if not settings.tavily_api_key:
+        raise RuntimeError("TAVILY_API_KEY is not configured")
+
+    return TavilyClient(api_key=settings.tavily_api_key)
+
+client = get_search_client()
 
 class SearchError(Exception):
     pass

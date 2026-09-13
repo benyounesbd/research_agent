@@ -19,8 +19,8 @@ class FakeClient:
 
 def test_critic_approves_good_draft(monkeypatch):
     monkeypatch.setattr(
-        "research_agent.nodes.critic.client",
-        FakeClient(),
+        "research_agent.nodes.critic.get_client",
+        lambda: FakeClient(),
     )
 
     state = {
@@ -63,8 +63,8 @@ class FakeClientReject:
 
 def test_critic_rejects_weak_draft(monkeypatch):
     monkeypatch.setattr(
-        "research_agent.nodes.critic.client",
-        FakeClientReject(),
+        "research_agent.nodes.critic.get_client",
+        lambda: FakeClientReject(),
     )
 
     state = {
