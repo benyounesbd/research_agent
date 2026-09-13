@@ -25,4 +25,7 @@ jobs:
         run: uv run ruff check .
 
       - name: Run tests
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         run: uv run pytest
