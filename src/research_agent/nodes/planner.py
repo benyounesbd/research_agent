@@ -1,8 +1,8 @@
-from research_agent.state import ResearchState
+from research_agent.config import settings
 from research_agent.llm import client
 from research_agent.schemas import ResearchPlan
+from research_agent.state import ResearchState
 
-from research_agent.config import settings
 
 def planner(state: ResearchState):
     question = state["question"]

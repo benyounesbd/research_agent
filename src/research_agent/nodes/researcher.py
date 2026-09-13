@@ -1,8 +1,8 @@
+from research_agent.config import settings
+from research_agent.observability import tracer
 from research_agent.state import ResearchState
 from research_agent.tools.search import search
-from research_agent.observability import tracer
 
-from research_agent.config import settings
 
 def researcher(state: ResearchState):
     plan = state["plan"]

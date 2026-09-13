@@ -1,6 +1,7 @@
-from research_agent.state import ResearchState
 from research_agent.llm import client
 from research_agent.schemas import Critique
+from research_agent.state import ResearchState
+
 
 def critic(state: ResearchState):
     question = state["question"]

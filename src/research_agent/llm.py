@@ -1,11 +1,8 @@
-import os
 
 import instructor
-from dotenv import load_dotenv
 from openai import OpenAI
-from research_agent.config import settings
 
-load_dotenv()
+from research_agent.config import settings
 
 client = instructor.from_openai(
     OpenAI(

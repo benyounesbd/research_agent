@@ -1,6 +1,7 @@
 from research_agent.nodes.critic import critic
 from research_agent.schemas import Critique, Source
 
+
 class FakeCompletions:
     def create(self, **kwargs):
         return Critique(

@@ -1,10 +1,8 @@
 from fastapi import FastAPI, HTTPException
-
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
 from research_agent.graph import graph
 from research_agent.schemas import ResearchRequest
-
 from research_agent.tools.search import SearchError
 
 app = FastAPI()
@@ -39,7 +37,7 @@ def start_research(request: ResearchRequest):
             detail="Research service temporarily unavailable",
         )
     
-    except Exception as exc:
+    except Exception as exc: # noqa: BLE001
         print(f"Research workflow failed: {exc}")
         raise HTTPException(status_code=500, detail="Research workflow failed")
     

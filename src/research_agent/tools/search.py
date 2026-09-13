@@ -1,6 +1,7 @@
-from research_agent.schemas import Source
-from tavily import TavilyClient
 from langsmith import traceable
+from tavily import TavilyClient
+
+from research_agent.schemas import Source
 
 client = TavilyClient()
 

@@ -1,5 +1,6 @@
-from research_agent.state import ResearchState
 from research_agent.llm import client
+from research_agent.state import ResearchState
+
 
 def synthesizer(state: ResearchState):
     question = state["question"]

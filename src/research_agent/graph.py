@@ -1,15 +1,15 @@
 import sqlite3
 
-from langgraph.graph import END, START, StateGraph
 from langgraph.checkpoint.sqlite import SqliteSaver
-
-from research_agent.nodes.critic import critic
-from research_agent.nodes.synthesizer import synthesizer
-from research_agent.nodes.planner import planner
-from research_agent.nodes.researcher import researcher
-from research_agent.state import ResearchState
+from langgraph.graph import END, START, StateGraph
 
 from research_agent.config import settings
+from research_agent.nodes.critic import critic
+from research_agent.nodes.planner import planner
+from research_agent.nodes.researcher import researcher
+from research_agent.nodes.synthesizer import synthesizer
+from research_agent.state import ResearchState
+
 
 def route_after_critic(state: ResearchState):
     critique = state["critique"]

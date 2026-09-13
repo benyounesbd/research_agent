@@ -1,7 +1,8 @@
+import pytest
+
 from research_agent.nodes.researcher import researcher
 from research_agent.schemas import ResearchPlan, Source
 
-import pytest
 
 def test_researcher_collects_sources(monkeypatch):
     def fake_search(query: str):

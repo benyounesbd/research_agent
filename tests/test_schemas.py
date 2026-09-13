@@ -3,6 +3,7 @@ from pydantic import ValidationError
 
 from research_agent.schemas import ResearchPlan
 
+
 def test_research_plan_is_valid():
     plan = ResearchPlan(
         sub_questions=["What is LangGraph?"],
