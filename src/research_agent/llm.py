@@ -9,5 +9,5 @@ def get_client():
         raise RuntimeError("OPENAI_API_KEY is not configured")
 
     return instructor.from_openai(
-        OpenAI(api_key=settings.openai_api_key)
+        OpenAI(api_key=settings.gemini_api_key)
     )
